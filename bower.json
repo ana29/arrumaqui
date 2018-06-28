@@ -1,0 +1,21 @@
+{
+    "name": "ArrumAqui",
+    "description": "",
+    "main": "index.js",
+    "authors": [
+
+    ],
+    "license": "MIT",
+    "homepage": "",
+    "private": true,
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+
+    }
+}
