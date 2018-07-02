@@ -12,12 +12,16 @@ Vocês devem abrir as tasks com tag "Especificado", comentar a estimativa no for
 
 ### Como inicio o trabalho em uma task?
 1. Acesse a issue que deseja trabalhar
-2. Selecione o botão "create merge request"
-3. Faça checkout para a branch `git checkout sua-branch`
+2. Mova a task no board para "doing", basta arrastar entre as colunas
+3. Selecione o botão "create merge request"
+4. Faça checkout para a branch `git checkout sua-branch`
 
 ### Como envio minhas mudanças para a branch?
 1. Estando na sua branch (checar com `git branch`), realize o commit `git add . && git commit -m "Mensagem sobre mudanças realizadas"`
 2. Realize push com `git push origin sua-branch`
+
+### O que faço ao terminar a task?
+Realize o merge e mova a task no board de issues para a coluna de "Done"
 
 ### Quem pode aceitar os Merge Requests para a branch develop?
 Qualquer pessoa pode aceitar as mudanças. Os Merge Requests são apenas para relacionar a implementação à issue criada.
