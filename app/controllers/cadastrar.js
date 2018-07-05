@@ -1,17 +1,28 @@
 //Controller para a cadastro de usuario
 
+
 let usuarios = [];
 
-module.exports = function() {
+module.exports = function (app) {
+  var Profissional = app.models.profissional;
 
   let controller = {};
 
-  controller.salvaCadastro = (req, res) => {
-      console.log('API: salvaCadastro');
+  controller.salvaCadastroProfissional = (req, res) => {
+    console.log('API: salvaCadastro');
 
-      let usuario = req.body;
+    var profissional = new Profissional(req.body);
 
-      res.json(usuario);
+    profissional.save(function (erro, profissional) {
+      if (erro) {
+        res.status(500).end();
+        console.log(erro)
+      } else {
+        res.json(profissional);
+      }
+    });
+
+
   }
 
   return controller;
