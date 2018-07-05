@@ -4,21 +4,21 @@
 let usuarios = [];
 
 module.exports = function (app) {
-  var Profissional = app.models.profissional;
+  var Usuario = app.models.usuario;
 
   let controller = {};
 
-  controller.salvaCadastroProfissional = (req, res) => {
+  controller.salvaCadastro = (req, res) => {
     console.log('API: salvaCadastro');
 
-    var profissional = new Profissional(req.body);
+    var usuario = new Usuario(req.body);
 
-    profissional.save(function (erro, profissional) {
+    usuario.save(function (erro, usuario) {
       if (erro) {
         res.status(500).end();
         console.log(erro)
       } else {
-        res.json(profissional);
+        res.json(usuario);
       }
     });
 

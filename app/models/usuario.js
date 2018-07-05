@@ -40,6 +40,6 @@ module.exports = function () {
 
     });
 
-    return mongoose.model('Profissionais', schema);
+    return mongoose.model('Usuario', schema);
 
 };

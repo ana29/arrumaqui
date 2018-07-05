@@ -3,7 +3,7 @@ module.exports = function(app) {
 
     let controller = app.controllers.cadastrar;
 
-    app.route('/api/cadastrarProfissional')
-        .post(controller.salvaCadastroProfissional);
+    app.route('/api/cadastrar')
+        .post(controller.salvaCadastro);
 
 }
