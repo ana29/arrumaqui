@@ -1,0 +1,22 @@
+{
+    "name": "ArrumAqui",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+        "start": "nodemon server.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "body-parser": "^1.18.3",
+        "ejs": "^2.6.1",
+        "express": "^4.16.3",
+        "express-load": "^1.1.16",
+        "method-override": "^2.3.10"
+    },
+    "devDependencies": {
+        "nodemon": "^1.17.5"
+    }
+}
