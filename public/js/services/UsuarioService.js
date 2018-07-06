@@ -1,6 +1,6 @@
 angular.module('arrumaqui')
 
-.factory('ProfissionalService', function($resource) {
+.factory('UsuarioService', function($resource) {
 
     //Cria o resource com o nome da rota configurada 
     //em app/routes/profissinais.js

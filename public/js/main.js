@@ -7,12 +7,12 @@ app.config(($routeProvider) => {
             controller: 'HomeController'
         })
         .when('/profissionais', {
-            templateUrl: 'partials/profissionais.html',
-            controller: 'ProfissionaisController'
+            templateUrl: 'partials/usuarios.html',
+            controller: 'UsuariosController'
         })
         .when('/profissionais/:profissionalId', {
-            templateUrl: 'partials/profissional.html',
-            controller: 'ProfissionalController'
+            templateUrl: 'partials/usuario.html',
+            controller: 'UsuarioController'
         })
         .when('/login', {
             templateUrl: 'partials/login.html'
