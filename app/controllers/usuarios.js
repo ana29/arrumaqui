@@ -58,7 +58,7 @@ module.exports = function (app) {
                 }
             );
     };
-
+    
     //Função que remove um usuario
     controller.removeUsuario = (req, res) => {
         console.log('API: removeUsuario');
@@ -67,7 +67,7 @@ module.exports = function (app) {
         let criterio = { "email": _emailUsuario };
         Usuario.remove(criterio).exec()
             .then(
-                function () {
+                function () {   
                     res.end();
                 },
                 function (erro) {
@@ -75,5 +75,22 @@ module.exports = function (app) {
                 }
             );
     };
-    return controller;
+
+    //Função que retorna um usuário por id
+    controller.obtemUsuarioPorId = function(req, res) {
+        var _id = req.params.id;
+        Usuario.findById(_id).exec()
+            .then(
+                function(usuario) {
+                    if (!usuario) throw new Error("Usuário não encontrado");
+                    res.json(usuario)
+                },
+                function(erro) {
+                    console.log(erro);
+                    res.status(404).json(erro)
+                }
+            ); 
+    };
+
+    return controller;    
 }
