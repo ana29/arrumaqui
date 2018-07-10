@@ -25,6 +25,7 @@ module.exports = function (app) {
 
     //Função que lista Todos os usuarios do bd 
     controller.listaTodos = function (req, res) {
+        console.log('API: listaTodos');
         Usuario.find().exec().then(
             function (usuario) {
                 res.json(usuario);

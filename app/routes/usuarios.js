@@ -3,7 +3,7 @@ module.exports = function(app) {
 
     let controller = app.controllers.usuarios;
     
-    app.route('/api/usuario')
+    app.route('/api/usuarios')
         .post(controller.salvaUsuario);
 
     app.route('/api/usuarios')
