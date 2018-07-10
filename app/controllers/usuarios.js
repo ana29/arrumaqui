@@ -44,7 +44,6 @@ module.exports = function (app) {
     controller.obtemUsuarioComEmail = function (req, res) {
         console.log('API: obtemUsuarioComEmail');
         let _emailUsuario = req.params.email;
-        //let criterio = { "email": _emailUsuario };
         let criterio = { "contato.email": _emailUsuario};
         Usuario.find(criterio).exec()
             .then(function (usuario) {
@@ -65,7 +64,7 @@ module.exports = function (app) {
         console.log('API: removeUsuario');
 
         let _emailUsuario = req.params.email;
-        let criterio = { "email": _emailUsuario };
+        let criterio = { "contato.email": _emailUsuario };
         Usuario.remove(criterio).exec()
             .then(
                 function () {   
