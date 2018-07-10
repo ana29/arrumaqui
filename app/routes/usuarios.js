@@ -10,5 +10,8 @@ module.exports = function(app) {
     app.route('/api/usuarios/:email')
         .get(controller.obtemUsuarioComEmail)
         .delete(controller.removeUsuario);
+    
+    app.route('/api/usuarios/:id')
+        .get(controller.obtemUsuarioPorId);
 
 }
