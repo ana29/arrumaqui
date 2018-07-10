@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 
-module.exports = function () {
+module.exports = function() {
     var schema = mongoose.Schema({
         nome: {
             type: String,
@@ -29,8 +29,7 @@ module.exports = function () {
                 type: String,
                 required: true
             }
-        }
-        ,
+        },
         servicos: {
             nome: {
                 //required: true,//Se add isso o db quebra :~ pq? n sei ...
