@@ -7,7 +7,7 @@ module.exports = function(app) {
         .post(controller.salvaUsuario)
         .get(controller.listaTodos);
 
-    app.route('/api/usuarios/:email')
+    app.route('/api/usuarios/getEmail/:email')
         .get(controller.obtemUsuarioComEmail)
         .delete(controller.removeUsuario);
     

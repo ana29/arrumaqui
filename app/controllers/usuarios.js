@@ -78,6 +78,7 @@ module.exports = function (app) {
 
     //Função que retorna um usuário por id
     controller.obtemUsuarioPorId = function(req, res) {
+        console.log('API: obtemUsuarioPorId');
         var _id = req.params.id;
         Usuario.findById(_id).exec()
             .then(
