@@ -1,6 +1,6 @@
 angular.module('arrumaqui')
 
-.controller('CadastroController', function($scope, CadastroService, $location) {
+.controller('CadastroController', function($scope, CadastroService, VerificaEmailService) {
 
     $scope.usuario = new CadastroService();
 
@@ -29,8 +29,6 @@ angular.module('arrumaqui')
         .then(() => {
                 $scope.mensagem = { texto: "Salvo com sucesso" };
                 $scope.usuario = new CadastroService();
-                $location.path('/login');
-
             })
             .catch((erro) => {
                 $scope.mensagem = { texto: "Não foi possível salvar" };

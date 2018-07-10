@@ -31,10 +31,13 @@ module.exports = function() {
             }
         },
         servicos: {
-            nome: {
-                //required: true,//Se add isso o db quebra :~ pq? n sei ...
+            /*nome: {
+                type: [String],
+                required: true,
                 enum: ['Pedreiro(a)', 'Marceneiro(a)', 'Artesã(o)', 'Encanador(a)', 'Eletricista', 'Diarista', 'Técnico Informática', 'Mecânico(a)']
-            }
+            }*/
+            type: Object,
+            required: true
         }
 
     });

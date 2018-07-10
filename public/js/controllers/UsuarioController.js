@@ -18,6 +18,8 @@ angular.module('arrumaqui')
             }
         );
     } else {
-        $scope.profissional = new UsuarioService();
+        $scope.mensagem = {
+            texto: "Contato não existe"
+        }
     }
-})
+});
