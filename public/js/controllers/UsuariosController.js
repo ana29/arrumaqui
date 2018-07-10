@@ -1,16 +1,16 @@
 angular.module('arrumaqui')
 
-.controller('ProfissionaisController', function($scope, ProfissionalService) {
+.controller('UsuariosController', function($scope, CadastrarService) {
 
-    $scope.profissionais = [];
+    $scope.usuarios = [];
 
     $scope.filtro = '';
 
     $scope.mensagem = { texto: '' };
 
-    let buscaProfissionais = () => {
-        ProfissionalService.query((profissionais) => {
-                $scope.profissionais = profissionais;
+    let buscaUsuarios = () => {
+        CadastrarService.query((usuarios) => {
+                $scope.usuarios = usuarios;
                 $scope.mensagem = {};
             },
 
@@ -25,6 +25,6 @@ angular.module('arrumaqui')
             });
     };
 
-    buscaProfissionais();
+    buscaUsuarios();
 
 });

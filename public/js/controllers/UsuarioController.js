@@ -1,10 +1,10 @@
 angular.module('arrumaqui')
 
-.controller('ProfissionalController', function($scope, $routeParams, ProfissionalService) {
+.controller('UsuarioController', function($scope, $routeParams, UsuarioService) {
     console.log($routeParams.profissionalId);
 
     if ($routeParams.profissionalId) {
-        ProfissionalService.get({ id: $routeParams.profissionalId },
+        UsuarioService.get({ id: $routeParams.profissionalId },
 
             (profissional) => {
                 $scope.profissional = profissional;
@@ -18,6 +18,8 @@ angular.module('arrumaqui')
             }
         );
     } else {
-        $scope.profissional = new ProfissionalService();
+        $scope.mensagem = {
+            texto: "Contato não existe"
+        }
     }
-})
+});
