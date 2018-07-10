@@ -44,10 +44,11 @@ module.exports = function (app) {
     controller.obtemUsuarioComEmail = function (req, res) {
         console.log('API: obtemUsuarioComEmail');
         let _emailUsuario = req.params.email;
-        let criterio = { "email": _emailUsuario };
+        //let criterio = { "email": _emailUsuario };
+        let criterio = { "contato.email": _emailUsuario};
         Usuario.find(criterio).exec()
             .then(function (usuario) {
-                if (!usuario) throw new Error("Contato não encontrado");
+                if (!usuario) throw new Error("Usuário não encontrado");
                 res.json(usuario)
                 res.status(201);
                 console.log(usuario);
