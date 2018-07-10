@@ -17,6 +17,10 @@ app.config(($routeProvider) => {
         .when('/login', {
             templateUrl: 'partials/login.html'
         })
+        .when('/cadastrar', {
+            templateUrl: 'partials/cadastro.html',
+            controller: 'CadastroController'
+        })
         .otherwise({
             redirectTo: '/'
         });

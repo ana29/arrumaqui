@@ -25,17 +25,21 @@
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#!/">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" ng-href="#!/profissionais">Profissionais</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" ng-href="#!/cadastrar">Cadastrar-se</a>
+                        <a class="nav-link" href="#!/home">ArrumaAqui<span class="sr-only">(current)</span></a>
                     </li>
                 </ul>
-                <div class="form-inline my-2 my-lg-0">
-                    <a ng-href="#!/login" class="btn btn-outline-success my-2 my-sm-0">Login</a>
+                <div class="form-inline my-2 my-lg-0" id="navbarsExampleDefault">
+		     <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a ng-href="#!/cadastrar" class="nav-link">Cadastrar </a>
+                    </li> 
+
+		    <li class="nav-item active">
+                        <a ng-href="#!/editar" class="nav-link">Editar </a>
+                    </li>
+
+		    <a ng-href="#!/login" class="btn btn-outline-success my-2 my-sm-0" style="margin: 0 5px;">Login</a>
+                </ul>
                 </div>
             </div>
         </div>
@@ -63,6 +67,7 @@
     <script src="js/controllers/ProfissionaisController.js"></script>
     <script src="js/controllers/ProfissionalController.js"></script>
     <script src="js/controllers/HomeController.js"></script>
+    <script src="js/controllers/CadastroController.js"></script>
 </body>
 
 </html>
