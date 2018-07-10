@@ -8,11 +8,11 @@
 
 <br>
 
-<div class="alert alert-info" ng-show="profissionais.length" role="alert">
+<div class="alert alert-info" ng-show="usuarios.length" role="alert">
     Profissionais cadastrados: {{usuarios.length}}
 </div>
 
-<div class="alert alert-info" ng-hide="profissionais.length" role="alert">
+<div class="alert alert-info" ng-hide="usuarios.length" role="alert">
     Não há profissionais cadastrados!
 </div>
 
@@ -29,7 +29,9 @@
         <tr ng-repeat="usuario in usuarios | filter:filtro">
             <td><a ng-href="#!/profissionais/{{profissional._id}}">{{usuario.nome}}</a></td>
             <td>{{ usuario.contato.email }}</td>
-            <td>{{ usuario.servicos }}</td>
+            <td>
+                <p ng-repeat="servico in usuario.servicos">{{servico.nome}}</p>
+            </td>
         </tr>
     </table>
 </div>

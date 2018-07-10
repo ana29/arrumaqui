@@ -1,6 +1,6 @@
 angular.module('arrumaqui')
 
-.controller('UsuariosController', function($scope, CadastrarService) {
+.controller('UsuariosController', function($scope, CadastroService) {
 
     $scope.usuarios = [];
 
@@ -9,7 +9,7 @@ angular.module('arrumaqui')
     $scope.mensagem = { texto: '' };
 
     let buscaUsuarios = () => {
-        CadastrarService.query((usuarios) => {
+        CadastroService.query((usuarios) => {
                 $scope.usuarios = usuarios;
                 $scope.mensagem = {};
             },

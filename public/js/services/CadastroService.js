@@ -4,5 +4,5 @@ angular.module('arrumaqui')
 
     //Cria o resource com o nome da rota configurada 
     //em app/routes/cadastrar.js
-    return $resource('/api/usuarios/');
+    return $resource('/api/usuarios');
 })
