@@ -1,3 +1,21 @@
 <br>
+<a href="#!/" class="btn btn-outline-secondary">Voltar</a>
+<br>
 
-<h1>{{ tituloPagina }}</h1>
+<div class="alert alert-danger" ng-show="mensagem.texto">
+    {{mensagem.texto}}
+</div>
+
+<br>
+
+<div class="alert alert-info" ng-show="usuarios.length" role="alert">
+    Serviços cadastrados: {{servicos.length}}
+</div>
+
+<div class="alert alert-info" ng-hide="usuarios.length" role="alert">
+    Não há serviços cadastrados!
+</div>
+
+<input type="search" class="form-control" ng-model="filtro" placeholder="Pesquisar">
+
+
