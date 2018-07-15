@@ -21,6 +21,10 @@ app.config(($routeProvider) => {
             templateUrl: 'partials/cadastro.html',
             controller: 'CadastroController'
         })
+        .when('/servicos', {
+            templateUrl: 'partials/servicos.html',
+            controller: 'ServicosController'
+        })
         .otherwise({
             redirectTo: '/'
         });
