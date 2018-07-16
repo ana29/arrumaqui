@@ -8,4 +8,5 @@ Neste documento irá conter os links para os documentos de cada tipo de gestão 
 - [Termo de qualidade](https://docs.google.com/document/d/1aFQwugc5zhMF4FoVsbWOidEEOgMx017tdlczsj50b6A/edit?usp=sharing)
 - [Plano de testes](https://docs.google.com/document/d/154S6X1B7O-woGrefk9j3kA6y3JL-IoDK_jg3opRQ0Gk/edit?usp=sharing)
 - [Estimativa de tempo](https://docs.google.com/spreadsheets/d/1kEnmnDGxohHkWQfqoeFXfiXZLCd-0Io7hAVFCWJuNzM/edit?usp=sharing)
+- [Planilha de riscos](https://docs.google.com/spreadsheets/d/1LIn1mlmiGtkCO04UFNR3BEeh3e_Ba7WL6qJlpa_iSFg/edit?usp=sharing)
 
