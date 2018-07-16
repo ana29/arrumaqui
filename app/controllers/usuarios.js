@@ -93,5 +93,20 @@ module.exports = function (app) {
             ); 
     };
 
+    // Vai mapear a pessoa para uma lista de serviços, 
+    //já como deve retornar para esta pessoa
+    const mapPessoa = (pessoa) => {
+        return pessoa.servicos.map(servico => {
+            return {
+                idPessoa: pessoa._id,
+                nomePessoa: pessoa.nome,
+                nomeServico: servico.nome,
+                email: pessoa.contato.email,
+                telefone: pessoa.contato.telefone,
+                whatsapp: pessoa.contato.whatsapp
+            }
+        });
+    }
+
     return controller;    
 }
