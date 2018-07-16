@@ -29,7 +29,7 @@ angular.module('arrumaqui')
         .then(() => {
                 $scope.mensagem = { texto: "Salvo com sucesso" };
                 alert("Salvo com sucesso!");
-                $location.path("/profissionais");
+                $location.path("/login");
             })
             .catch((erro) => {
                 alert("Não foi possível salvar");

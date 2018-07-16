@@ -15,7 +15,8 @@ app.config(($routeProvider) => {
             controller: 'UsuarioController'
         })
         .when('/login', {
-            templateUrl: 'partials/login.html'
+            templateUrl: 'partials/login.html',
+            controller: 'LoginController'
         })
         .when('/cadastrar', {
             templateUrl: 'partials/cadastro.html',

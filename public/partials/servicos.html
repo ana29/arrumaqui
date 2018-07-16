@@ -18,4 +18,16 @@
 
 <input type="search" class="form-control" ng-model="filtro" placeholder="Pesquisar">
 
+<div class="table-responsive">
+    <table class="table table-hover">
+        <tr>
+            <th>SERVIÇO</th>
+            <th>PROFISSIONAL</th>
+        </tr>
 
+        <tr ng-repeat="servico in servicos | filter:filtro">
+            <td>{{servico.nomeServico}}</td>
+            <td><a ng-href="#!/profissionais/{{servico.idPessoa}}">{{ servico.nomePessoa }}</a></td>
+        </tr>
+    </table>
+</div>
