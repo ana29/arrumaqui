@@ -18,5 +18,4 @@ module.exports = function(app) {
         .post(controller.autenticaLogin)
 
 
-
 }
