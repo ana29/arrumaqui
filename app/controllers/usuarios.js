@@ -1,4 +1,6 @@
 //Controller para a entidade usuario
+var jwt     = require('jsonwebtoken');
+var bcrypt = require('bcrypt');
 
 module.exports = function (app) {
     var Usuario = app.models.usuario;
@@ -7,7 +9,10 @@ module.exports = function (app) {
     //Função que salva o usuario no bd 
     controller.salvaUsuario = (req, res) => {
         console.log('API: salvaUsuario');
+        var hashedPassword = bcrypt.hashSync(req.body.password, 8);
+
         var usuario = new Usuario(req.body);
+
         usuario.save(function (erro, usuario) {
             if (erro) {
                 res.status(500).json(erro).end();
@@ -38,7 +43,6 @@ module.exports = function (app) {
             }
         );
     };
-
 
     //Função que retorna um usuario pelo email
     controller.obtemUsuarioComEmail = function (req, res) {
@@ -92,6 +96,46 @@ module.exports = function (app) {
                 }
             ); 
     };
+
+    controller.autenticaLogin = (req, res) => {
+        console.log('API: autenticaLogin');
+        let _emailUsuario = req.body.email;
+        let _senha =req.body.senha
+        let criterio = { "contato.email": _emailUsuario};
+
+        Usuario.findOne(criterio).exec()
+        .then(function (usuario) {
+
+             if(!usuario) {
+                 res.json({ success: false, message: 'Autenticação do Usuário falhou. Usuário não encontrado!' });
+             } else if (usuario) {
+                 //Aqui iremos verificar se a senha bate com o que está cadastrado no banco:
+                 if(usuario.senha != _senha) {
+                     res.json({ success: false, message: 'Autenticação do Usuário falhou. Senha incorreta!' });
+                 } else {
+                     // caso a senha do usuário seja encontrada.... iremos criar um token:
+                     var token = jwt.sign(usuario, _senha, {
+                    expiresIn: 60 * 24 // expires in 24 hours
+                });
+
+                     //Aqui iremos retornar a informação do token via JSON:
+                     res.json({
+                         success: true,
+                         message: 'Token criado!!!',
+                         toke: token
+                     });
+                 }
+             }
+        },
+        function (erro) {
+            console.log(erro);
+            res.status(404).json(erro);
+        }
+    );
+
+
+
+    }
 
     return controller;    
 }
