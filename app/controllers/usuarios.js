@@ -22,11 +22,8 @@ module.exports = function (app) {
                 res.json(usuario);
                 res.status(201);
                 console.log(201);
-
             }
         });
-
-
     }
 
     //Função que lista Todos os usuarios do bd 

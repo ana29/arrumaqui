@@ -3,9 +3,9 @@
         <img class="mb-4" src="../favicon.png" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">Faça login</h1>
         <label for="inputEmail" class="sr-only">Email</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email" required="" autofocus="">
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email" required="" autofocus="" ng-model="login.email">
         <label for="inputPassword" class="sr-only">Senha</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Senha" required="">
+        <input type="password" id="inputPassword" class="form-control" placeholder="Senha" required="" ng-model="login.senha">
         <br><br>
         <button class="btn btn-lg btn-info btn-block" type="submit">Entrar</button>
         <p class="mt-5 mb-3 text-muted">© 2018</p>

@@ -1,5 +1,11 @@
 angular.module('arrumaqui')
 
-.controller('LoginController', function($scope) {
-    $scope.nomeApp = 'ArrumAqui';
+.controller('LoginController', function($scope, LoginService) {
+    
+    $scope.login.email = '';
+    $scope.login.senha = '';
+
+    $scope.login = () => {
+        
+    }
 });
