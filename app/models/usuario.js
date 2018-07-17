@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
 
-
 module.exports = function() {
     var schema = mongoose.Schema({
         nome: {
@@ -40,7 +39,8 @@ module.exports = function() {
         }
 
     });
-
+ 
+      
     return mongoose.model('Usuario', schema);
 
 };

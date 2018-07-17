@@ -15,6 +15,8 @@ module.exports = function(app) {
         .get(controller.obtemUsuarioPorId);
 
     app.route('/api/servicos')
-    	.get(controller.listaServicos);
-
+        .get(controller.listaServicos);
+        
+    app.route('/api/login')
+        .post(controller.autenticaLogin);
 }
