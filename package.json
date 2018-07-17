@@ -1,0 +1,29 @@
+{
+    "name": "arrumaqui",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+        "start": "nodemon server.js",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "postinstall": "bower install"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "body-parser": "^1.18.3",
+        "ejs": "^2.6.1",
+        "express": "^4.16.3",
+        "express-jwt": "^3.0.1",
+        "express-load": "^1.1.16",
+        "method-override": "^2.3.10",
+        "jsonwebtoken": "^5.7.0",
+        "mongoose": "^5.2.1",
+        "bcrypt": "^1.0.2"
+    },
+    "devDependencies": {
+        "passport": "0.4.x",
+        "nodemon": "^1.17.5",
+        "bower": "^1.8"
+    }
+}

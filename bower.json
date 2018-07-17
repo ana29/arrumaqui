@@ -1,0 +1,26 @@
+{
+  "name": "ArrumAqui",
+  "description": "",
+  "main": "index.js",
+  "authors": [],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.7.2",
+    "angular-route": "^1.7.2",
+    "bootstrap": "^4.1.1",
+    "jquery": "^3.3.1",
+    "angular-resource": "^1.7.2",
+    "angular-messages": "^1.7.2",
+    "isteven-angular-multiselect": "angular-multi-select#^4.0.0",
+    "ngstorage": "^0.3.11"
+  }
+}

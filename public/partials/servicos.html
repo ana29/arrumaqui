@@ -1,0 +1,56 @@
+<br>
+<a href="#!/" class="btn btn-outline-secondary">Voltar</a>
+<br>
+
+<div class="alert alert-danger" ng-show="mensagem.texto">
+    {{mensagem.texto}}
+</div>
+
+<br>
+
+<div class="alert alert-info" ng-show="servicos.length" role="alert">
+    Serviços cadastrados: {{servicos.length}}
+</div>
+
+<div class="alert alert-info" ng-hide="servicos.length" role="alert">
+    Não há serviços cadastrados!
+</div>
+
+<input type="search" class="form-control" ng-model="filtro" placeholder="Pesquisar">
+
+<br>
+<br>
+
+<div class="justify-content-center" style="display: flex; flex-flow: row wrap;">
+    <div align="center" ng-repeat="servico in servicos | filter:filtro" class="card" style="width: 15rem; margin: 3px">
+        <div class="card-body">
+            <h5 class="card-title">{{servico.nomeServico}}</h5>
+            <hr>
+            <p class="card-text">{{servico.nomePessoa}}</p>
+            <button ng-click="selecionaServico(servico)" data-toggle="modal" data-target="#detalhesServico" class="btn btn-primary disabled">Ver detalhes</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal
+<div class="modal fade" id="detalhesServico" tabindex="-1" role="dialog" aria-labelledby="detalhesServicoTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header list-group-item-primary">
+                <h5 class="modal-title" id="exampleModalLongTitle">{{selecionado.nomeServico}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p><b>Profissional:</b> {{selecionado.nomePessoa}}</p>
+                <p><b>Email:</b> {{selecionado.email}}</p>
+                <p><b>Telefone:</b> {{selecionado.telefone}}</p>
+                <p ng-if="selecionado.whatsapp"><b>Whatsapp:</b> {{selecionado.whatsapp}}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>-->
