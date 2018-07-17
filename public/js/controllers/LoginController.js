@@ -12,6 +12,7 @@ angular.module('arrumaqui')
                         (profissional) => {
                             $localStorage.usuarioLogado = profissional;
                             $rootScope.usuarioLogado = $localStorage.usuarioLogado;
+                            alert("Bem vindo, " + $rootScope.usuarioLogado[0].nome);
                         },
                         (erro) => {
                             $scope.mensagem = {
@@ -20,10 +21,13 @@ angular.module('arrumaqui')
                             console.log(erro);
                         }
                     )
+                    
+                    
                     $localStorage.token = res.token;
                     $rootScope.token = $localStorage.token;
                     $location.path('/');
                     console.log(res);
+                    
                 },
                 function(err) {
                     alert("Email ou senha incorreto(s)");
