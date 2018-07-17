@@ -2,7 +2,7 @@ var app = angular.module('arrumaqui', ['ngRoute',
                                        'ngResource', 
                                        'ngMessages', 
                                        'isteven-multi-select',
-                                       ]);
+                                       'ngStorage']);
 
 app.config(($routeProvider) => {
     $routeProvider
