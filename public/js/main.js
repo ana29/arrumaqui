@@ -1,4 +1,8 @@
-var app = angular.module('arrumaqui', ['ngRoute', 'ngResource', 'ngMessages', 'isteven-multi-select']);
+var app = angular.module('arrumaqui', ['ngRoute', 
+                                       'ngResource', 
+                                       'ngMessages', 
+                                       'isteven-multi-select',
+                                       ]);
 
 app.config(($routeProvider) => {
     $routeProvider

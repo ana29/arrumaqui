@@ -26,8 +26,7 @@ module.exports = function() {
                 unique: true
             },
             whatsapp: {
-                type: String,
-                required: true
+                type: String
             }
         },
         servicos: {
