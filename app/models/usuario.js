@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
 
-
 module.exports = function() {
     var schema = mongoose.Schema({
         nome: {
@@ -26,8 +25,7 @@ module.exports = function() {
                 unique: true
             },
             whatsapp: {
-                type: String,
-                required: true
+                type: String
             }
         },
         servicos: {
@@ -41,7 +39,7 @@ module.exports = function() {
         }
 
     });
-
+      
     return mongoose.model('Usuario', schema);
 
 };

@@ -2,7 +2,7 @@
 var mongoose = require('mongoose');
 
 module.exports = function(uri) {
-    mongoose.connect(uri);
+    mongoose.connect(uri, {useNewUrlParser:true,poolSize:15});
 
     mongoose.connection.on('connected', function() {
         console.log('Mongoose! Conectado em ' + uri);
@@ -16,7 +16,7 @@ module.exports = function(uri) {
 
   process.on('SIGINT', function() {
     mongoose.connection.close(function() {
-    console.log('Mongoose! Desconectado pelo término daaplicação');
+    console.log('Mongoose! Desconectado pelo término da aplicação');
     // 0 indica que a finalização ocorreu sem erros
     process.exit(0);
   });

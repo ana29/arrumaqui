@@ -1,4 +1,6 @@
 //Controller para a entidade usuario
+var jwt = require('jsonwebtoken');
+var bcrypt = require('bcrypt');
 
 module.exports = function (app) {
     var Usuario = app.models.usuario;
@@ -7,7 +9,11 @@ module.exports = function (app) {
     //Função que salva o usuario no bd 
     controller.salvaUsuario = (req, res) => {
         console.log('API: salvaUsuario');
+        var hashedPassword = bcrypt.hashSync(req.body.senha, 8);
         var usuario = new Usuario(req.body);
+
+        usuario.senha = hashedPassword;
+
         usuario.save(function (erro, usuario) {
             if (erro) {
                 res.status(500).json(erro).end();
@@ -16,11 +22,8 @@ module.exports = function (app) {
                 res.json(usuario);
                 res.status(201);
                 console.log(201);
-
             }
         });
-
-
     }
 
     //Função que lista Todos os usuarios do bd 
@@ -39,12 +42,11 @@ module.exports = function (app) {
         );
     };
 
-
     //Função que retorna um usuario pelo email
     controller.obtemUsuarioComEmail = function (req, res) {
         console.log('API: obtemUsuarioComEmail');
         let _emailUsuario = req.params.email;
-        let criterio = { "contato.email": _emailUsuario};
+        let criterio = { "contato.email": _emailUsuario };
         Usuario.find(criterio).exec()
             .then(function (usuario) {
                 if (!usuario) throw new Error("Usuário não encontrado");
@@ -58,7 +60,7 @@ module.exports = function (app) {
                 }
             );
     };
-    
+
     //Função que remove um usuario
     controller.removeUsuario = (req, res) => {
         console.log('API: removeUsuario');
@@ -67,7 +69,7 @@ module.exports = function (app) {
         let criterio = { "contato.email": _emailUsuario };
         Usuario.remove(criterio).exec()
             .then(
-                function () {   
+                function () {
                     res.end();
                 },
                 function (erro) {
@@ -77,21 +79,89 @@ module.exports = function (app) {
     };
 
     //Função que retorna um usuário por id
-    controller.obtemUsuarioPorId = function(req, res) {
+    controller.obtemUsuarioPorId = function (req, res) {
         console.log('API: obtemUsuarioPorId');
         var _id = req.params.id;
         Usuario.findById(_id).exec()
             .then(
-                function(usuario) {
+                function (usuario) {
                     if (!usuario) throw new Error("Usuário não encontrado");
                     res.json(usuario)
                 },
-                function(erro) {
+                function (erro) {
                     console.log(erro);
                     res.status(404).json(erro)
                 }
-            ); 
+            );
     };
 
-    return controller;    
+    // Vai mapear a pessoa para uma lista de serviços, 
+    //já como deve retornar para esta pessoa
+    const mapPessoa = (pessoa) => {
+        return pessoa.servicos.map(servico => {
+            return {
+                idPessoa: pessoa._id,
+                nomePessoa: pessoa.nome,
+                nomeServico: servico.nome,
+                email: pessoa.contato.email,
+                telefone: pessoa.contato.telefone,
+                whatsapp: pessoa.contato.whatsapp
+            }
+        });
+    }
+
+    // Listagem a retornar da API
+    controller.listaServicos = (req, res) => {
+        Usuario.find({}, (erro, usuarios) => {
+
+            if (erro) return res.status(400).json(erro);
+
+            const servicos = usuarios.reduce((listagem, pessoa) => {
+                const servicosPessoa = mapPessoa(pessoa);
+                return listagem.concat(servicosPessoa);
+            },[]);
+
+            res.json(servicos);
+
+        });
+    };
+  
+    controller.autenticaLogin = (req, res, next) => {
+        console.log('API: autenticaLogin');
+        let _emailUsuario = req.body.email;
+        let _senha = req.body.senha
+
+        let criterio = { "contato.email": _emailUsuario };
+        Usuario.findOne(criterio).then(function (usuario) {
+
+            if (!usuario) {
+                res.status(401).json({ success: false, message: 'Autenticação do Usuário falhou. Usuário não encontrado!' });
+            } else if (usuario) {
+
+                bcrypt.compare(_senha, usuario.senha).then(function (passcheck) {
+                    if (passcheck) {
+                        var token = jwt.sign(usuario, usuario.senha, {
+                            expiresIn: 1440
+                        });
+                        res.status(200).json({
+                            success: true,
+                            message: 'Token criado!!!',
+                            token: token
+                        });
+                    } else {
+                        res.status(401).json({ success: false, message: 'Autenticação do Usuário falhou. ' });
+                    }
+
+                });
+
+            }
+        },
+            function (erro) {
+                console.log(erro);
+                res.status(404).json(erro);
+            }
+        );
+    }
+
+    return controller;
 }

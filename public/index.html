@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="vendor/isteven-angular-multiselect/isteven-multi-select.css">
 </head>
 
-<body>
+<body ng-controller="RootController" ng-cloak>
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
         <div class="container">
@@ -30,15 +30,19 @@
                 </ul>
                 <div class="form-inline my-2 my-lg-0" id="navbarsExampleDefault">
                     <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <span style="cursor: default;" class="nav-link" href="javascript:void(0)">{{$root.usuarioLogado[0].nome}}</span>
+                        </li>
                         <li class="nav-item active">
-                            <a ng-href="#!/cadastrar" class="nav-link">Cadastrar </a>
+                            <a ng-href="#!/cadastrar" class="nav-link" ng-show="$root.token == null">Cadastrar </a>
                         </li>
 
                         <li class="nav-item active">
-                            <a ng-href="#!/editar" class="nav-link">Editar </a>
+                            <a ng-href="#!/editar" class="nav-link" ng-show="$root.token != null">Editar </a>
                         </li>
 
-                        <a ng-href="#!/login" class="btn btn-outline-success my-2 my-sm-0" style="margin: 0 5px;">Login</a>
+                        <a ng-href="#!/login" class="btn btn-outline-success my-2 my-sm-0" style="margin: 0 5px;" ng-show="$root.token == null">Login</a>
+                        <a ng-href="#!/" ng-click="logout()" class="btn btn-outline-success my-2 my-sm-0" style="margin: 0 5px;" ng-show="$root.token != null">Logout</a>
                     </ul>
                 </div>
             </div>
@@ -57,7 +61,8 @@
     <script src="vendor/angular-messages/angular-messages.min.js"></script>
     <script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="vendor/isteven-angular-multiselect/isteven-multi-select.js"></script>
-
+    <script src="vendor/ngstorage/ngStorage.min.js"></script>
+    <script src="https://unpkg.com/popper.js"></script>
 
     <!-- Módulo principal -->
     <script src="js/main.js"></script>
@@ -66,12 +71,17 @@
     <script src="js/services/UsuarioService.js"></script>
     <script src="js/services/CadastroService.js"></script>
     <script src="js/services/VerificaEmailService.js"></script>
+    <script src="js/services/ServicoService.js"></script>
+    <script src="js/services/LoginService.js"></script>
 
     <!-- Controllers -->
     <script src="js/controllers/UsuariosController.js"></script>
     <script src="js/controllers/UsuarioController.js"></script>
     <script src="js/controllers/HomeController.js"></script>
     <script src="js/controllers/CadastroController.js"></script>
+    <script src="js/controllers/ServicosController.js"></script>
+    <script src="js/controllers/LoginController.js"></script>
+    <script src="js/controllers/RootController.js"></script>
 </body>
 
 </html>

@@ -14,4 +14,9 @@ module.exports = function(app) {
     app.route('/api/usuarios/:id')
         .get(controller.obtemUsuarioPorId);
 
+    app.route('/api/servicos')
+        .get(controller.listaServicos);
+        
+    app.route('/api/login')
+        .post(controller.autenticaLogin);
 }
