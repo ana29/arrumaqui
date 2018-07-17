@@ -1,5 +1,5 @@
 angular.module('arrumaqui')
 
-.controller('HomeController', function($scope) {
+.controller('HomeController', function($scope, $rootScope) {
     $scope.nomeApp = 'ArrumAqui';
 });

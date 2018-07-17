@@ -146,7 +146,7 @@ module.exports = function (app) {
                         res.status(200).json({
                             success: true,
                             message: 'Token criado!!!',
-                            toke: token
+                            token: token
                         });
                     } else {
                         res.status(401).json({ success: false, message: 'Autenticação do Usuário falhou. ' });

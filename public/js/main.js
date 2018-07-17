@@ -34,3 +34,25 @@ app.config(($routeProvider) => {
             redirectTo: '/'
         });
 });
+
+app.run(($rootScope, $location, $localStorage) => {
+    $rootScope.token = $localStorage.token;
+
+    let rotasBloqueadasNaoLogado = ['/editar'];
+    let rotasBloqueadasLogado = ['/cadastrar', '/login'];
+
+    $rootScope.$on('$locationChangeStart', () => {
+        if ($rootScope.token == null &&
+            rotasBloqueadasNaoLogado.indexOf($location.path()) != -1) {
+                $location.path('/login');
+        }
+    });
+
+    $rootScope.$on('$locationChangeStart', () => {
+        if ($rootScope.token != null &&
+            rotasBloqueadasLogado.indexOf($location.path()) != -1) {
+                $location.path('/home');
+        }
+    });
+
+});
