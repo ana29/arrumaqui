@@ -6,7 +6,7 @@ module.exports = function (app) {
     var Usuario = app.models.usuario;
     var controller = {};
 
-    //Função que salva o usuario no bd 
+    //Função que salva o usuario no bd
     controller.salvaUsuario = (req, res) => {
         console.log('API: salvaUsuario');
         var hashedPassword = bcrypt.hashSync(req.body.senha, 8);
@@ -24,9 +24,30 @@ module.exports = function (app) {
                 console.log(201);
             }
         });
-    }
+    };
 
-    //Função que lista Todos os usuarios do bd 
+    controller.atualizaUsuarioPorId = (req, res) => {
+        console.log('API: atualizaUsuarioPorId');
+        let _emailUsuario = req.params.email;
+        let criterio = { "contato.email": _emailUsuario };
+
+        Usuario.find(criterio).exec()
+            .then(function (usuario) {
+                if (!usuario) throw new Error("Email incorreto");
+                res.json(usuario);
+                res.status(200);
+                console.log(usuario);
+            },
+                function (erro) {
+                    console.log(erro);
+                    res.status(404).json(erro);
+                }
+            );
+
+
+    };
+
+    //Função que lista Todos os usuarios do bd
     controller.listaTodos = function (req, res) {
         console.log('API: listaTodos');
         Usuario.find().exec().then(
@@ -95,7 +116,7 @@ module.exports = function (app) {
             );
     };
 
-    // Vai mapear a pessoa para uma lista de serviços, 
+    // Vai mapear a pessoa para uma lista de serviços,
     //já como deve retornar para esta pessoa
     const mapPessoa = (pessoa) => {
         return pessoa.servicos.map(servico => {
@@ -125,7 +146,7 @@ module.exports = function (app) {
 
         });
     };
-  
+
     controller.autenticaLogin = (req, res, next) => {
         console.log('API: autenticaLogin');
         let _emailUsuario = req.body.email;
