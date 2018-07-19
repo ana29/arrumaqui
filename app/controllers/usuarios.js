@@ -28,15 +28,33 @@ module.exports = function (app) {
 
     controller.atualizaUsuarioPorId = (req, res) => {
         console.log('API: atualizaUsuarioPorId');
-        let _emailUsuario = req.params.email;
-        let criterio = { "contato.email": _emailUsuario };
 
-        Usuario.find(criterio).exec()
+        let _idUsuario = req.params.id
+        let criterio = { "_id": _idUsuario };
+
+        let _email = req.body.email
+        let _senha = req.body.senha
+        let _novaSenha = req.body.novaSenha
+
+        Usuario.findById(criterio).exec()
             .then(function (usuario) {
-                if (!usuario) throw new Error("Email incorreto");
-                res.json(usuario);
-                res.status(200);
-                console.log(usuario);
+                if (!usuario) {
+                    res.status(401).json({ success: false, message: 'Usuário não encontrado' });
+                } else if (usuario) {
+                    console.log(_email)
+                    if (usuario.contato.email === _email) {
+                        bcrypt.compare(_senha, usuario.senha).then(function (passcheck) {
+                            if (passcheck) {
+                                //TODO - ATUALIZAR A SENHA DO USUARIO AQUI
+                                res.status(200).json({ success: true, message: 'Senha atualizada!' });
+                            } else {
+                                res.status(401).json({ success: false, message: 'Senha antiga incorreta' });
+                            }
+                        });
+                    } else {
+                        res.status(401).json({ success: false, message: 'Email incorreto' });
+                    }
+                }
             },
                 function (erro) {
                     console.log(erro);
@@ -140,13 +158,13 @@ module.exports = function (app) {
             const servicos = usuarios.reduce((listagem, pessoa) => {
                 const servicosPessoa = mapPessoa(pessoa);
                 return listagem.concat(servicosPessoa);
-            },[]);
+            }, []);
 
             res.json(servicos);
 
         });
     };
-
+    //Autentica Login 
     controller.autenticaLogin = (req, res, next) => {
         console.log('API: autenticaLogin');
         let _emailUsuario = req.body.email;
