@@ -14,7 +14,7 @@
                     <div class="form-row">
                         <div class="col-md-8 form-group">
                             <label>Nome completo</label>
-                            <input type="text" name="usuario" class="form-control" placeholder="" required ng-model="usuario.nome">
+                            <input type="text" name="usuario" class="form-control" placeholder="" required ng-model="$root.usuarioLogado.nome">
                             <div class="position-absolute field-message" ng-messages="frm.usuario.$error" ng-if='frm.usuario.$dirty' ng-cloak>
                                 <small ng-message="required">Seu nome completo é necessário</small>
                             </div>
