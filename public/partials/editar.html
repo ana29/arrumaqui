@@ -1,0 +1,124 @@
+<br>
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="container alert alert-warning" ng-show="mensagem.texto">
+            {{ mensagem.texto }}
+        </div>
+        <div class="card">
+            <header class="card-header">
+                <h4 class="card-title mt-2"><b>Configurações gerais da conta</b></h4>
+            </header>
+            <article class="card-body">
+                <!-- COMENTADO <form ng-submit="cadastrar()" class="pure-form" name="frm"> -->
+                    <div class="form-row">
+                        <div class="col-md-8 form-group">
+                            <label>Nome completo</label>
+                            <input type="text" name="usuario" class="form-control" placeholder="" required ng-model="usuario.nome">
+                            <div class="position-absolute field-message" ng-messages="frm.usuario.$error" ng-if='frm.usuario.$dirty' ng-cloak>
+                                <small ng-message="required">Seu nome completo é necessário</small>
+                            </div>
+                        </div>
+                        <!-- form-group end.// -->
+                        <div class="col-md-4 form-group">
+                            <label>Idade</label>
+                            <input type="number" name="idade" min="18" max="70" class="form-control" placeholder="" required ng-model="usuario.idade">
+                            <div class="position-absolute field-message" ng-messages="frm.idade.$error" ng-if='frm.idade.$dirty' ng-cloak>
+                                <small ng-message="min">Você deve ter 18 anos!</small>
+                                <small ng-message="max">Você deve ter menos de 70 anos!</small>
+                            </div>
+                        </div>
+                        <!-- form-group end.// -->
+                    </div>
+
+                    <h5 class="card-title mt-2"><b>Informações de contato</b></h5>
+                    <hr>
+                    <!-- form-row end.// -->
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input name="email" type="email" class="form-control" placeholder="exemplo@email.com" required ng-model="usuario.contato.email">
+                        <div class="position-absolute field-message" ng-messages="frm.email.$error" ng-if='frm.email.$dirty' ng-cloak>
+                            <small ng-message="required">O email é necessário</small>
+                            <small ng-message="email">Deve ser um email válido</small>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col form-group">
+                            <label>Telefone</label>
+                            <input type="text" name="telefone" class="form-control" placeholder="(XX) XXXX-XXXX" required ng-model="usuario.contato.telefone">
+                            <div class="position-absolute field-message" ng-messages="frm.telefone.$error" ng-if='frm.email.$dirty' ng-cloak>
+                                <small ng-message="required">O telefone é necessário</small>
+                            </div>
+                        </div>
+
+                        <div class="col form-group">
+                            <label>Whatsapp</label>
+                            <input type="text" class="form-control" placeholder="(XX) X XXXX-XXXX" ng-model="usuario.contato.whatsapp">
+                        </div>
+                    </div>
+
+                    <!-- form-group end.// -->
+
+                    <h5 class="card-title mt-2"><b>Informações de Serviços</b></h5>
+                    <small class="text-muted">Selecione o(s) serviço(s) que você oferece.</small>
+                    <hr>
+
+                    <div class="form-group">
+                        <div isteven-multi-select translation="localLang" input-model="servicosOfertados" output-model="usuario.servicos" button-label="icon nome" item-label="icon nome" tick-property="tick" output-properties="nome">
+                        </div>
+                    </div>
+
+                    <!-- form-row.// -->
+                    <div class="form-group">
+                        <label>Senha</label>
+                        <input required ng-minlength="6" class="form-control" name="senha" type="password" ng-model="usuario.senha" password-verify="user.confirm_senha">
+                        <div class="position-absolute field-message" ng-messages="frm.senha.$error" ng-if='frm.senha.$dirty' ng-cloak>
+                            <small ng-message="required">A senha é necessária</small>
+                            <small ng-message="minlength">A senha deve ter pelo menos 6 caracteres</small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Repita a senha</label>
+                        <input class="form-control" name="confirm_senha" type="password" ng-model="user.confirm_senha">
+                        <div class="position-absolute field-message" ng-messages="frm.confirm_senha.$error" ng-show="frm.confirm_senha.$error.$dirty || frm.confirm_senha.$touched" ng-cloak>
+                            <small ng-message="myPwdInvalid">A confirmação deve ser igual a senha</small>
+                        </div>
+                    </div>
+
+                    <!-- form-group end.// -->
+                    <div class="form-group">
+                        <button class="btn btn-primary btn-block"> Salvar</button>
+                    </div>
+                    <!-- form-group// -->
+                </form>
+            </article>
+           
+    </div>
+    <!-- col.//-->
+
+</div>
+<!-- row.//-->
+<br>
+
+<style>
+    .pure-form input.ng-dirty.ng-invalid {
+        border-color: #e9322d;
+    }
+    
+    .field-message {
+        display: inline-block;
+        color: #e9322d;
+        font-size: 90%;
+        margin-left: 0.5em;
+    }
+    
+    [ng\:cloak],
+    [ng-cloak],
+    [data-ng-cloak],
+    [x-ng-cloak],
+    .ng-cloak,
+    .x-ng-cloak {
+        display: none !important;
+    }
+</style>
