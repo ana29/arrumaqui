@@ -29,24 +29,33 @@ module.exports = function (app) {
     controller.atualizaUsuarioPorId = (req, res) => {
         console.log('API: atualizaUsuarioPorId');
 
-        let _idUsuario = req.params.id
+        let _idUsuario = req.params.id;
         let criterio = { "_id": _idUsuario };
 
-        let _email = req.body.email
-        let _senha = req.body.senha
-        let _novaSenha = req.body.novaSenha
+        let _email = req.body.email;
+        let _senha = req.body.senha;
+        let _novaSenha = req.body.novaSenha;
 
         Usuario.findById(criterio).exec()
             .then(function (usuario) {
                 if (!usuario) {
                     res.status(401).json({ success: false, message: 'Usuário não encontrado' });
                 } else if (usuario) {
-                    console.log(_email)
+
                     if (usuario.contato.email === _email) {
                         bcrypt.compare(_senha, usuario.senha).then(function (passcheck) {
                             if (passcheck) {
-                                //TODO - ATUALIZAR A SENHA DO USUARIO AQUI
-                                res.status(200).json({ success: true, message: 'Senha atualizada!' });
+                                var hashedPassword = bcrypt.hashSync(_novaSenha, 8);
+                                usuario.senha = hashedPassword;
+
+                                usuario.save(function (erro, usuario) {
+                                    if (erro) {
+                                        console.log(error);
+                                        res.status(401).json({ success: false, message: 'Erro ao atualizar senha' });
+                                    } else {
+                                        res.status(200).json({ success: true, message: 'Senha atualizada!' });
+                                    }
+                                });
                             } else {
                                 res.status(401).json({ success: false, message: 'Senha antiga incorreta' });
                             }
@@ -61,8 +70,6 @@ module.exports = function (app) {
                     res.status(404).json(erro);
                 }
             );
-
-
     };
 
     //Função que lista Todos os usuarios do bd
