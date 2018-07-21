@@ -34,6 +34,10 @@ app.config(($routeProvider) => {
             templateUrl: 'partials/editar.html',
             controller: 'EditarController'
         })
+	.when('/editar2', {
+            templateUrl: 'partials/editar2.html',
+            controller: 'Editar2Controller'
+        })
         .otherwise({
             redirectTo: '/'
         });
