@@ -171,6 +171,7 @@ module.exports = function (app) {
 
         });
     };
+   
     //Autentica Login 
     controller.autenticaLogin = (req, res, next) => {
         console.log('API: autenticaLogin');
@@ -208,6 +209,33 @@ module.exports = function (app) {
             }
         );
     }
+    
+    //Autentica usuario
+    controller.autenticaUsuario = (req, res) => {
+        console.log('API: autenticaUsuario');
+        let _emailUsuario = req.body.email;
+        let _senha = req.body.senha
 
+        let criterio = { "contato.email": _emailUsuario };
+        Usuario.findOne(criterio).then(function (usuario) {
+            if (!usuario) {
+                res.status(401).json({ success: false, message: 'Usuário não encontrado!' });
+            } else if (usuario) {
+                bcrypt.compare(_senha, usuario.senha).then(function (passcheck) {
+                    if (passcheck) {
+                        res.json(usuario)
+                        res.status(200)
+                    } else {
+                        res.status(401).json({ success: false, message: 'Autenticação do Usuário falhou. ' });
+                    }
+                });
+            }
+        },
+            function (erro) {
+                console.log(erro);
+                res.status(404).json(erro);
+            }
+        );
+    }
     return controller;
 }

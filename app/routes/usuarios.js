@@ -1,5 +1,5 @@
 //Rota para usuarios
-module.exports = function(app) {
+module.exports = function (app) {
 
     let controller = app.controllers.usuarios;
 
@@ -8,8 +8,12 @@ module.exports = function(app) {
         .get(controller.listaTodos);
 
     app.route('/api/usuarios/getEmail/:email')
+        .post(controller.autenticaUsuario)
         .get(controller.obtemUsuarioComEmail)
         .delete(controller.removeUsuario);
+
+    app.route('/api/usuarios/email')
+        .post(controller.autenticaUsuario)
 
     app.route('/api/usuarios/:id')
         .get(controller.obtemUsuarioPorId)
