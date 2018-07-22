@@ -4,6 +4,17 @@ angular.module('arrumaqui')
 
         $scope.servicos = [];
 
+        $scope.servicosOfertados = [
+            { nome: "Pedreiro(a)"},
+            { nome: "Marceneiro(a)"},
+            { nome: "Artesã(o)"},
+            { nome: "Encanador(a)"},
+            { nome: "Eletricista"},
+            { nome: "Diarista"},
+            { nome: "Técnico Informática"},
+            { nome: "Mecânico(a)"}
+        ];
+
         let buscaServicos = () => {
             // query Faz um get no recurso api/servicos
             ServicoService.query((servicos) => {
@@ -28,4 +39,4 @@ angular.module('arrumaqui')
             $scope.selecionado = servico;
         };
     });
-
+    
