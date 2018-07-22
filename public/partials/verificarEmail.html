@@ -1,0 +1,69 @@
+<br>
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="container alert alert-warning" ng-show="mensagem.texto">
+            {{ mensagem.texto }}
+        </div>
+        <div class="card">
+            <header class="card-header">
+                <h4 class="card-title mt-2"><b>Editar configurações</b></h4>
+            </header>
+            <article class="card-body">
+                <form  class="form-signin" ng-submit="verificaEmail()">
+                   <!-- <h5 class="card-title mt-2"><b>Informações de contato</b></h5> -->
+                    <!-- form-row end.// -->
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input name="email" type="email" class="form-control" placeholder="exemplo@email.com" required="" ng-model="email">
+                        <div class="position-absolute field-message" ng-messages="frm.email.$error" ng-if='frm.email.$dirty' ng-cloak>
+                            <small ng-message="required">O email é necessário</small>
+                            <small ng-message="email">Deve ser um email válido</small>
+                        </div>
+                    </div>
+                    <!-- form-row.// -->
+                    <div class="form-group">
+                        <label>Senha</label>
+                        <input required ng-minlength="6" class="form-control" name="senha" type="password" ng-model="senha">
+                        <div class="position-absolute field-message" ng-messages="frm.senha.$error" ng-if='frm.senha.$dirty' ng-cloak>
+                            <small ng-message="required">A senha é necessária</small>
+                            <small ng-message="minlength">A senha deve ter pelo menos 6 caracteres</small>
+                        </div>
+                    </div>
+
+                    <!-- form-group end.// -->
+                    <div class="form-group">
+                        <button class="btn btn-primary btn-block" type="submit"> Ir</button>
+                    </div>
+                    <!-- form-group// -->
+                </form>
+            </article>
+           
+    </div>
+    <!-- col.//-->
+
+</div>
+<!-- row.//-->
+<br>
+
+<style>
+    .pure-form input.ng-dirty.ng-invalid {
+        border-color: #e9322d;
+    }
+    
+    .field-message {
+        display: inline-block;
+        color: #e9322d;
+        font-size: 90%;
+        margin-left: 0.5em;
+    }
+    
+    [ng\:cloak],
+    [ng-cloak],
+    [data-ng-cloak],
+    [x-ng-cloak],
+    .ng-cloak,
+    .x-ng-cloak {
+        display: none !important;
+    }
+</style>
