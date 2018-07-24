@@ -12,7 +12,6 @@ angular.module('arrumaqui')
             { nome: "Técnico Informática", ticked: false },
             { nome: "Mecânico(a)", ticked: false }
         ];
-
         $scope.localLang = {
             selectAll: "Todos",
             selectNone: "Nenhum",
@@ -20,8 +19,6 @@ angular.module('arrumaqui')
             search: "Buscar...",
             nothingSelected: "Nenhum selecionado" //default-label is deprecated and replaced with this.
         }
-
-        
         app.directive('passwordVerify', function () {
             return {
                 restrict: 'A',
@@ -53,9 +50,12 @@ angular.module('arrumaqui')
             if ($scope.usuario.contato.email != null && $scope.usuario.senha != null) {
                 EdicaoService.editar( $scope.usuario.nome, $scope.usuario.contato.email, $scope.usuario.senha ,$scope.usuario.nova_senha,$scope.usuario.idade,$scope.usuario.contato.telefone, $scope.usuario.contato.whatsapp, $scope.usuario.servicos).then(
                         function (res) {
-                        console.log(res);
-                        $scope.usuario = res;
-           
+
+                        console.log(res)
+
+                        $localStorage.usuarioLogado = res;
+                        $rootScope.usuarioLogado[0] = $localStorage.usuarioLogado;
+
                         alert("Dados Atualizados");
                         $location.path('/home');
                     },

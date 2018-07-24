@@ -30,6 +30,7 @@ module.exports = function (app) {
         console.log('API: atualizaUsuarioPorId');
         let _idUsuario = req.params.id;
         let criterio = { "_id": _idUsuario };
+        let _nome = req.body.nome;
         let _email = req.body.email;
         let _senha = req.body.senha;
         let _novaSenha = req.body.novaSenha;
@@ -50,6 +51,9 @@ module.exports = function (app) {
                                 var hashedPassword = bcrypt.hashSync(_novaSenha, 8);
                                 usuario.senha = hashedPassword;
 
+                                if ( _nome !== "") {
+                                    usuario.nome = _nome;
+                                }
                                 if ( _novoWhats !== "") {
                                     usuario.contato.whatsapp = _novoWhats;
                                 }
@@ -69,7 +73,7 @@ module.exports = function (app) {
                                         console.log(erro);
                                         res.status(401).json({ success: false, message: 'Erro ao atualizar senha' });
                                     } else {
-                                        res.status(200).json({ success: true, message: 'Senha atualizada!' });
+                                        res.status(200).json(usuario);
                                     }
                                 });
                             } else {
