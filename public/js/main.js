@@ -46,7 +46,7 @@ app.config(($routeProvider) => {
 app.run(($rootScope, $location, $localStorage) => {
     $rootScope.token = $localStorage.token;
 
-    let rotasBloqueadasNaoLogado = ['/editar'];
+    let rotasBloqueadasNaoLogado = ['/editar', '/verificaEmail'];
     let rotasBloqueadasLogado = ['/cadastrar', '/login'];
 
     $rootScope.$on('$locationChangeStart', () => {

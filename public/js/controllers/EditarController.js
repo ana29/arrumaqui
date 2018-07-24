@@ -1,7 +1,7 @@
 angular.module('arrumaqui')
 
-    .controller('EditarController', function ($scope, $rootScope, $location, EdicaoService) {
-        $scope.nomeTela = 'Tela de Edição';
+    .controller('EditarController', function ($scope, $rootScope, $location, EdicaoService, $localStorage) {
+
         $scope.servicosOfertados = [
             { nome: "Pedreiro(a)", ticked: false },
             { nome: "Marceneiro(a)", ticked: false },
