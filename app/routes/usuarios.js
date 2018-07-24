@@ -17,7 +17,7 @@ module.exports = function (app) {
 
     app.route('/api/usuarios/:id')
         .get(controller.obtemUsuarioPorId)
-        .put(controller.atualizaUsuarioPorId);
+        .post(controller.atualizaUsuarioPorId);
 
     app.route('/api/servicos')
         .get(controller.listaServicos);

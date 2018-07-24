@@ -28,10 +28,8 @@ module.exports = function (app) {
 
     controller.atualizaUsuarioPorId = (req, res) => {
         console.log('API: atualizaUsuarioPorId');
-
         let _idUsuario = req.params.id;
         let criterio = { "_id": _idUsuario };
-
         let _email = req.body.email;
         let _senha = req.body.senha;
         let _novaSenha = req.body.novaSenha;
@@ -39,8 +37,7 @@ module.exports = function (app) {
         let _novoWhats = req.body.novoWhatsapp;
         let _novaIdade = req.body.novaIdade;
         let _novosServicos = req.body.novosServicos;
-
-
+        console.log(req.body);
         Usuario.findById(criterio).exec()
             .then(function (usuario) {
                 if (!usuario) {
@@ -69,7 +66,7 @@ module.exports = function (app) {
 
                                 usuario.save(function (erro, usuario) {
                                     if (erro) {
-                                        console.log(error);
+                                        console.log(erro);
                                         res.status(401).json({ success: false, message: 'Erro ao atualizar senha' });
                                     } else {
                                         res.status(200).json({ success: true, message: 'Senha atualizada!' });
