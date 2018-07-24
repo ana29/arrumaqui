@@ -35,6 +35,11 @@ module.exports = function (app) {
         let _email = req.body.email;
         let _senha = req.body.senha;
         let _novaSenha = req.body.novaSenha;
+        let _novoTelefone = req.body.novoTelefone;
+        let _novoWhats = req.body.novoWhatsapp;
+        let _novaIdade = req.body.novaIdade;
+        let _novosServicos = req.body.novosServicos;
+
 
         Usuario.findById(criterio).exec()
             .then(function (usuario) {
@@ -47,6 +52,20 @@ module.exports = function (app) {
                             if (passcheck) {
                                 var hashedPassword = bcrypt.hashSync(_novaSenha, 8);
                                 usuario.senha = hashedPassword;
+
+                                if ( _novoWhats !== "") {
+                                    usuario.contato.whatsapp = _novoWhats;
+                                }
+
+                                if ( _novoTelefone !== ""){
+                                    usuario.contato.telefone = _novoTelefone;
+                                }
+
+                                if ( _novaIdade > usuario.idade && _novaIdade <= 70){
+                                    usuario.idade = _novaIdade;
+                                }
+
+                                usuario.servicos = _novosServicos;
 
                                 usuario.save(function (erro, usuario) {
                                     if (erro) {
