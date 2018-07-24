@@ -51,7 +51,7 @@ angular.module('arrumaqui')
         $scope.editar = () => {
                            
             if ($scope.usuario.contato.email != null && $scope.usuario.senha != null) {
-                EdicaoService.editar( $scope.usuario.nome, $scope.usuario.contato.email, $scope.usuario.senha ,$scope.usuario.nova_senha,$scope.usuario.idade, $scope.usuario.whatsapp, $scope.usuario.servicos).then(
+                EdicaoService.editar( $scope.usuario.nome, $scope.usuario.contato.email, $scope.usuario.senha ,$scope.usuario.nova_senha,$scope.usuario.idade,$scope.usuario.contato.telefone, $scope.usuario.contato.whatsapp, $scope.usuario.servicos).then(
                         function (res) {
                         console.log(res);
                         $scope.usuario = res;

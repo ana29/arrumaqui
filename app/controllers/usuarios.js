@@ -36,8 +36,8 @@ module.exports = function (app) {
         let _novoTelefone = req.body.novoTelefone;
         let _novoWhats = req.body.novoWhatsapp;
         let _novaIdade = req.body.novaIdade;
-        let _novosServicos = req.body.novosServicos;
-        console.log(req.body);
+        let _novosServicos = req.body.novosServicos;        
+        
         Usuario.findById(criterio).exec()
             .then(function (usuario) {
                 if (!usuario) {
