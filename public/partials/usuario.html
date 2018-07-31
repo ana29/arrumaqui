@@ -1,23 +1,60 @@
 <br>
-<h1 class="text-center">{{profissional.nome}}</h1>
 
-<div class="alert alert-info" ng-show="mensagem.texto">
-    {{ mensagem.texto }}
+<div>
+    <a href="#!/profissionais" class="btn btn-outline-secondary">Voltar</a>
 </div>
+<br />
+<div class="container">
+    <div class="row justify-content-center">
 
-<form>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h2 class="panel-title">{{profissional.nome}}</h2>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-9 col-lg-9">
+                            <table class="table table-user-information">
+                                <tbody>
+                                    <tr>
+                                        <td><b>Idade</b></td>
+                                        <td>{{profissional.idade}}</td>
+                                    </tr>
 
-    <div class="form-group">
-        <label for="nome">Nome</label>
-        <input type="text" class="form-control" readonly id="nome" name="nome" ng-model="profissional.nome">
+                                    <tr>
+                                        <td><b>Telefone</b></td>
+                                        <td>{{profissional.contato.telefone}}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><b>WhatsApp</b></td>
+                                        <td>{{profissional.contato.whatsapp}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Email</b></td>
+                                        <td>
+                                            <a href="mailto:{{usuario.contato.email}}">{{profissional.contato.email}}</a>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><b>Serviços</b></td>
+                                        <td>
+                                            <p ng-repeat="servico in profissional.servicos">
+                                                {{servico.nome}}
+                                            </p>
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" class="form-control" readonly name="email" ng-model="profissional.email" aria-label="Email" aria-describedby="basic-addon1">
-    </div>
-
-    <div>
-        <a href="#!/" class="btn btn-outline-secondary">Voltar</a>
-    </div>
-</form>
+</div>
+<br />
