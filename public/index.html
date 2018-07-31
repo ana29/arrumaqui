@@ -17,15 +17,20 @@
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#"><img src="favicon.png" alt="" width="30px"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
+            <a class="navbar-brand" href="#">
+                <img src="favicon.png" alt="" width="30px">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#!/home">ArrumaAqui<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="#!/home">ArrumaAqui
+                            <span class="sr-only">(current)</span>
+                        </a>
                     </li>
                 </ul>
                 <div class="form-inline my-2 my-lg-0" id="navbarsExampleDefault">
@@ -49,30 +54,95 @@
         </div>
     </nav>
 
+    <div ng-view class="container"></div>
+    <div class="footer" data-toggle="modal" data-target="#detalhesDevs">
+        <span ng-click="main.openModal()">Equipe</span>
+    </div>
+    <!-- Modal com Detalhes dos devs -->
+    <div class="modal fade" id="detalhesDevs" tabindex="-1" role="dialog" aria-labelledby="detalhesServicoTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header list-group-item-primary">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Desenvolvedores</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
 
-    <br><br>
+                <div class="modal-body">
 
-	
-    <div ng-view class="container"></div>  
-	
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div>
+                                <div>
+                                    <img src="/img/day.jpg" class="img-responsive">
+                                </div>
+                                <p>Dayana Souza</p>
+                                <p>GitHub</p>
+                                <p>LinkedIn</p>
+                            </div>
+                            <div>
+                                <div>
+                                    <img src="/img/ana.jpg" class="img-responsive">
+                                </div>
+                                <p>Ana Isadora</p>
+                                <p>GitHub</p>
+                                <p>LinkedIn</p>
+                            </div>
 
-	<style>
-	.footer {
-	    position: fixed;
-	    left: 0;
-	    bottom: 0;
-	    width: 100%;
-	    background-color:#E3E1E1;
-	    color:#616060;
-	    text-align: center;
-	}
-	</style>
+                        </div>
+                        <div class="row">
+                            <div>
+                                <div>
+                                    <img src="/img/johanny.jpg" class="img-responsive">
+                                </div>
+                                <p>Johanny Santos</p>
+                                <p>GitHub</p>
+                                <p>LinkedIn</p>
+                            </div>
+                            <div>
+                                <div>
+                                    <img src="/img/pedro.jpg" class="img-responsive">
+                                </div>
+                                <p>Pedro Lira</p>
+                                <p>GitHub</p>
+                                <p>LinkedIn</p>
+                            </div>
 
-	<div class="footer">
-	  <p class="text-muted">Desenvolvedores</p>
-	</div>
-     
+                        </div>
+                    </div>
+                </div>
 
+
+
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    <style>
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: white;
+            color: #686565;
+            text-align: center;
+        }
+
+        .img-responsive {
+            width: 90px;
+            height: 90px;
+            ;
+        }
+    </style>
     <!-- Scripts gerenciados pelo Bower-->
     <script src="vendor/angular/angular.min.js"></script>
     <script src="vendor/jquery/dist/jquery.min.js"></script>
