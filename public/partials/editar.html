@@ -37,7 +37,7 @@
                     <!-- form-row end.// -->
                     <div class="form-group">
                         <label>Email</label>
-                        <input name="email" type="email" class="form-control" ng-init="usuario.contato.email = usuarioLogado[0].contato.email" required ng-model="usuario.contato.email">
+                        <input disabled name="email" type="email" class="form-control" ng-init="usuario.contato.email = usuarioLogado[0].contato.email" required ng-model="usuario.contato.email">
                         <div class="position-absolute field-message" ng-messages="frm.email.$error" ng-if='frm.email.$dirty' ng-cloak>
                             <small ng-message="required">O email é necessário</small>
                             <small ng-message="email">Deve ser um email válido</small>

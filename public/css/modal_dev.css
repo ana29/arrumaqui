@@ -96,3 +96,13 @@ h6.description{
 i.red{
     color:#BC0213;
 }
+
+@font-face {
+	font-family: 'Font-Awesome';
+	src: url('../css/font-awesome-4.5.0/fonts/fontawesome-webfont.eot');
+	src: url('../css/font-awesome-4.5.0/fonts/fontawesome-webfont.svg');
+	src: url('../css/font-awesome-4.5.0/fonts/fontawesome-webfont.ttf');
+	src: url('../css/font-awesome-4.5.0/fonts/fontawesome-webfont.woff');
+	src: url('../css/font-awesome-4.5.0/fonts/fontawesome-webfont.woff2');
+	src: url('../css/font-awesome-4.5.0/fonts/FontAwesome.otf');
+}

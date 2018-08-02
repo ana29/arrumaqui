@@ -70,25 +70,27 @@
                     </div>
 
                     <!-- form-row.// -->
-                    <div class="form-group">
+                    <div class="form-group"  ng-class="{'has-error': (frm.senha.$touched || frm.$submitted) && frm.senha.$invalid}">
                         <label>Senha</label>
-                        <input required ng-minlength="6" class="form-control" name="senha" type="password" ng-model="usuario.senha" password-verify="user.confirm_senha">
-                        <div class="position-absolute field-message" ng-messages="frm.senha.$error" ng-if='frm.senha.$dirty' ng-cloak>
+                        <input required ng-minlength="6" class="form-control" name="senha" type="password" ng-model="usuario.senha">
+                        <div class="position-absolute field-message" ng-messages="frm.senha.$error" ng-show="frm.$submitted || frm.senha.$touched">
                             <small ng-message="required">A senha é necessária</small>
                             <small ng-message="minlength">A senha deve ter pelo menos 6 caracteres</small>
                         </div>
                     </div>
-                    <div class="form-group">
+
+                    <div class="form-group" ng-class="{'has-error': (frm.confirmSenha.$touched || frm.$submitted) && frm.confirmSenha.$invalid}">
                         <label>Repita a senha</label>
-                        <input class="form-control" name="confirm_senha" type="password" ng-model="user.confirm_senha">
-                        <div class="position-absolute field-message" ng-messages="frm.confirm_senha.$error" ng-show="frm.confirm_senha.$error.$dirty || frm.confirm_senha.$touched" ng-cloak>
-                            <small ng-message="myPwdInvalid">A confirmação deve ser igual a senha</small>
+                        <input class="form-control" name="confirmSenha" type="password" ng-model="usuario.confirmSenha" required ng-pattern="\b{{usuario.senha}}\b">
+                        <div class="position-absolute field-message" ng-messages="frm.confirmSenha.$error" ng-show="frm.$submitted || frm.confirmSenha.$touched">
+                            <small ng-message="required">Digite sua confirmação de senha</small>
+                            <small ng-message="pattern">A confirmação deve ser igual a senha</small>
                         </div>
                     </div>
-
+                    <br>
                     <!-- form-group end.// -->
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+                        <button type="submit" class="btn btn-primary btn-block" ng-disabled="!(usuario.senha === usuario.confirmSenha)">Cadastrar</button>
                     </div>
                     <!-- form-group// -->
                 </form>
@@ -123,5 +125,9 @@
     .ng-cloak,
     .x-ng-cloak {
         display: none !important;
+    }
+    
+    p[ng-message]{
+        color: red;
     }
 </style>
