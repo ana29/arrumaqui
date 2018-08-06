@@ -1,8 +1,8 @@
-var app = angular.module('arrumaqui', ['ngRoute', 
-                                       'ngResource', 
-                                       'ngMessages', 
-                                       'isteven-multi-select',
-                                       'ngStorage']);
+var app = angular.module('arrumaqui', ['ngRoute',
+    'ngResource',
+    'ngMessages',
+    'isteven-multi-select',
+    'ngStorage']);
 
 app.config(($routeProvider) => {
     $routeProvider
@@ -26,9 +26,17 @@ app.config(($routeProvider) => {
             templateUrl: 'partials/cadastro.html',
             controller: 'CadastroController'
         })
+        .when('/verificaEmail', {
+            templateUrl: 'partials/verificaEmail.html',
+            controller: 'EditarController'
+        })
         .when('/servicos', {
             templateUrl: 'partials/servicos.html',
             controller: 'ServicosController'
+        })
+        .when('/editar', {
+            templateUrl: 'partials/editar.html',
+            controller: 'EditarController'
         })
         .otherwise({
             redirectTo: '/'
@@ -38,20 +46,20 @@ app.config(($routeProvider) => {
 app.run(($rootScope, $location, $localStorage) => {
     $rootScope.token = $localStorage.token;
 
-    let rotasBloqueadasNaoLogado = ['/editar'];
+    let rotasBloqueadasNaoLogado = ['/editar', '/verificaEmail'];
     let rotasBloqueadasLogado = ['/cadastrar', '/login'];
 
     $rootScope.$on('$locationChangeStart', () => {
         if ($rootScope.token == null &&
             rotasBloqueadasNaoLogado.indexOf($location.path()) != -1) {
-                $location.path('/login');
+            $location.path('/login');
         }
     });
 
     $rootScope.$on('$locationChangeStart', () => {
         if ($rootScope.token != null &&
             rotasBloqueadasLogado.indexOf($location.path()) != -1) {
-                $location.path('/home');
+            $location.path('/home');
         }
     });
 

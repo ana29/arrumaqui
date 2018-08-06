@@ -23,15 +23,11 @@
         <tr>
             <th>NOME</th>
             <th>EMAIL</th>
-            <th>SERVIÇOS</th>
         </tr>
 
         <tr ng-repeat="usuario in usuarios | filter:filtro">
-            <td><a ng-href="#!/profissionais/{{profissional._id}}">{{usuario.nome}}</a></td>
+            <td><a ng-href="#!/profissionais/{{usuario._id}}">{{usuario.nome}}</a></td>
             <td>{{ usuario.contato.email }}</td>
-            <td>
-                <p ng-repeat="servico in usuario.servicos">{{servico.nome}}</p>
-            </td>
         </tr>
     </table>
 </div>

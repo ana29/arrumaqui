@@ -3,6 +3,7 @@ angular.module('arrumaqui')
 .controller('CadastroController', function($scope, CadastroService, VerificaEmailService, $location) {
 
     $scope.usuario = new CadastroService();
+    $scope.usuario.confirmSenha = "";
 
     $scope.servicosOfertados = [
         { nome: "Pedreiro(a)", ticked: false },
@@ -27,9 +28,12 @@ angular.module('arrumaqui')
         $scope.usuario.$save()
 
         .then(() => {
+            if ($scope.frm.$valid) {
                 $scope.mensagem = { texto: "Salvo com sucesso" };
                 alert("Salvo com sucesso!");
                 $location.path("/login");
+            }
+                
             })
             .catch((erro) => {
                 alert("Não foi possível salvar");
@@ -45,6 +49,22 @@ angular.module('arrumaqui')
                 ngModel.$validators.myPwdInvalid = function(modelValue, viewValue) {
                     return viewValue === scope.$eval(attrs.passwordVerify);
                 };
+            }
+        };
+    });
+
+    app.directive('equalWith', function($parse) {
+        return {
+            require: "ngModel",
+            scope: { compareTo: '&'},
+            link: function(scope, elem, attrs, ctrl) {
+                ctrl.$validators.equalWith = function(modelValue) {
+                    return (modelValue === scope.equalWith());
+                }
+
+                scope.$watch(scope.equalWith, function(value) {
+                    ctrl.$validate();
+                });
             }
         };
     });

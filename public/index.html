@@ -11,21 +11,31 @@
     <!-- CSS -->
     <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="vendor/isteven-angular-multiselect/isteven-multi-select.css">
+    <link rel="stylesheet" href="css/modal_dev.css">
+    <link rel="stylesheet" href="css/font-awesome-4.5.0/css/font-awesome.min.css">
 </head>
 
 <body ng-controller="RootController" ng-cloak>
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#"><img src="favicon.png" alt="" width="30px"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
+            <a class="navbar-brand" href="#">
+                <img src="favicon.png" alt="" width="30px">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#!/home">ArrumaAqui<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="#!/home">ArrumaAqui
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-toggle="modal" data-target="#detalhesDEV">
+                        <span style="cursor:pointer" ng-click="main.openModal()" class="nav-link">Sobre</span>
                     </li>
                 </ul>
                 <div class="form-inline my-2 my-lg-0" id="navbarsExampleDefault">
@@ -50,8 +60,151 @@
     </nav>
 
     <br><br>
-
     <div ng-view class="container"></div>
+    <br><br>
+    <div class="footer">
+        <span style="cursor: pointer;"  data-toggle="modal" data-target="#detalhesDEV" ng-click="main.openModal()">Equipe</span>
+    </div>
+
+    <!-- Modal com Detalhes dos Desenvolvedores -->
+    <div class="modal fade" id="detalhesDEV" tabindex="-1" role="dialog" aria-labelledby="detalhesDEVTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header list-group-item-primary">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Equipe de Desenvolvedores</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row pt-md">
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 profile text-center">
+                            <div class="img-box">
+                                <img src="/img/ana.jpg" class="img-responsive">
+                                <ul class="text-center">
+                                    <a target="_blank" href="https://github.com/ana29">
+                                        <li>
+                                            <i class="fa fa-github"></i>
+                                        </li>
+                                    </a>
+                                </ul>
+                            </div>
+                            <h1>Ana Isadora</h1>
+                            <h2>Desenvolvedora</h2>
+                        </div>
+                    
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 profile text-center">
+                            <div class="img-box">
+                                <img src="/img/day.jpg" class="img-responsive">
+                                <ul class="text-center">
+                                    <a target="_blank" href="https://github.com/DayanaSouza">
+                                        <li>
+                                            <i class="fa fa-github"></i>
+                                        </li>
+                                    </a>
+                                </ul>
+                            </div>
+                            <h1>Dayana Souza</h1>
+                            <h2>Desenvolvedora</h2>
+                        </div>
+                    
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 profile text-center">
+                            <div class="img-box">
+                                <img src="/img/johanny.jpg" class="img-responsive">
+                                <ul class="text-center">
+                                    <a target="_blank" href="https://github.com/johannydls">
+                                        <li>
+                                            <i class="fa fa-github"></i>
+                                        </li>
+                                    </a>
+                                </ul>
+                            </div>
+                            <h1>Johanny Santos</h1>
+                            <h2>Desenvolvedor</h2>
+                        </div>
+                    
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 profile text-center">
+                            <div class="img-box">
+                                <img src="/img/pedro.jpg" class="img-responsive">
+                                <ul class="text-center">
+                                    <a target="_blank" href="https://github.com/liraop">
+                                        <li>
+                                            <i class="fa fa-github"></i>
+                                        </li>
+                                    </a>
+                                </ul>
+                            </div>
+                            <h1>Pedro<br> Lira</h1>
+                            <h2>Desenvolvedor</h2>
+                        </div>
+                    </div>
+
+                    <div class="row pt-md">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 profile text-center">
+                            <div class="img-box">
+                                <img src="/img/eric.png" class="img-responsive">
+                                <ul class="text-center">
+                                    <a target="_blank" href="https://github.com/ericbreno">
+                                        <li>
+                                            <i class="fa fa-github"></i>
+                                        </li>
+                                    </a>
+                                </ul>
+                            </div>
+                            <h1>Eric<br> Breno</h1>
+                            <h2>Scrum Master</h2>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 profile text-center">
+                            <div class="img-box">
+                                <img src="/img/lucas.jpeg" class="img-responsive">
+                                <ul class="text-center">
+                                    <a target="_blank" href="https://github.com/lucasecdb">
+                                        <li>
+                                            <i class="fa fa-github"></i>
+                                        </li>
+                                    </a>
+                                </ul>
+                            </div>
+                            <h1>Lucas<br> Cordeiro</h1>
+                            <h2>Gestor de Qualidade</h2>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 profile text-center">
+                            <div class="img-box">
+                                <img src="/img/rafael.jpeg" class="img-responsive">
+                                <ul class="text-center">
+                                    <a target="_blank" href="https://github.com/rafaeltj13">
+                                        <li>
+                                            <i class="fa fa-github"></i>
+                                        </li>
+                                    </a>
+                                </ul>
+                            </div>
+                            <h1>Rafael<br> Maciel</h1>
+                            <h2>Gestor de Escopo</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            background-color:#E3E1E1;
+            color:#616060;
+
+        }
+    </style>
 
     <!-- Scripts gerenciados pelo Bower-->
     <script src="vendor/angular/angular.min.js"></script>
@@ -73,6 +226,7 @@
     <script src="js/services/VerificaEmailService.js"></script>
     <script src="js/services/ServicoService.js"></script>
     <script src="js/services/LoginService.js"></script>
+    <script src="js/services/EdicaoService.js"></script>
 
     <!-- Controllers -->
     <script src="js/controllers/UsuariosController.js"></script>
@@ -82,6 +236,7 @@
     <script src="js/controllers/ServicosController.js"></script>
     <script src="js/controllers/LoginController.js"></script>
     <script src="js/controllers/RootController.js"></script>
+    <script src="js/controllers/EditarController.js"></script>
 </body>
 
 </html>
